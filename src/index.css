@@ -1,0 +1,92 @@
+/* === ListParticipantes.css === */
+
+/* Contenedor general */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* Logo del congreso */
+.logo-tic {
+  width: 45px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Tarjeta del participante */
+.card {
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sombra-tarjeta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Foto de perfil */
+.foto-perfil {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #198754;
+}
+
+/* Texto */
+h5 {
+  font-size: 1.1rem;
+}
+.text-muted {
+  font-size: 0.9rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .foto-perfil {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  h3.fw-bold {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  input.form-control {
+    font-size: 0.9rem;
+  }
+
+  .foto-perfil {
+    width: 60px;
+    height: 60px;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+}
