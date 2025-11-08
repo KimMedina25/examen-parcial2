@@ -38,25 +38,25 @@ const ListParticipantes = () => {
   });
 
   return (
-    <div
+     <div
       style={{
         minHeight: "100vh",
         background: "linear-gradient(135deg, #dceeff, #d5f7e2, #e6dcfa)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "40px",
+        padding: "20px",
       }}
     >
       <div
         style={{
-          background: "rgba(255, 255, 255, 0.85)",
+          background: "rgba(255, 255, 255, 0.9)",
           borderRadius: "20px",
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-          padding: "40px",
+          padding: "20px",
           textAlign: "center",
-          maxWidth: "900px",
           width: "100%",
+          maxWidth: "900px",
           backdropFilter: "blur(8px)",
         }}
       >
@@ -64,21 +64,21 @@ const ListParticipantes = () => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            flexDirection: "column",
+            gap: "10px",
             alignItems: "center",
-            marginBottom: "25px",
+            justifyContent: "center",
+            marginBottom: "20px",
           }}
         >
-          <h3 style={{ fontWeight: "bold", color: "#333" }}>
+          <h3 style={{ fontWeight: "bold", color: "#333", display: "flex", alignItems: "center", gap: "10px" }}>
             <img
               src="/congresoTics2.jpg"
               alt="Congreso TIC"
               style={{
-                width: "50px",
+                width: "45px",
                 height: "auto",
-                marginRight: "10px",
                 borderRadius: "8px",
-                verticalAlign: "middle",
               }}
             />
             Asistentes Registrados
@@ -89,14 +89,11 @@ const ListParticipantes = () => {
             style={{
               backgroundColor: "#28a745",
               color: "white",
-              padding: "10px 20px",
+              padding: "10px 25px",
               borderRadius: "25px",
               textDecoration: "none",
               fontWeight: "600",
-              transition: "background-color 0.3s",
             }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#218838")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#28a745")}
           >
             Registro
           </Link>
@@ -113,8 +110,9 @@ const ListParticipantes = () => {
             padding: "10px 15px",
             borderRadius: "10px",
             border: "1px solid #ccc",
-            marginBottom: "25px",
+            marginBottom: "20px",
             outline: "none",
+            fontSize: "16px",
           }}
         />
 
@@ -122,7 +120,7 @@ const ListParticipantes = () => {
         {participantesFiltrados.length === 0 ? (
           <p style={{ color: "#777" }}>No hay participantes registrados</p>
         ) : (
-          <div style={{ textAlign: "left" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {participantesFiltrados.map((p, index) => (
               <div
                 key={p.idParticipante || index}
@@ -130,19 +128,17 @@ const ListParticipantes = () => {
                   background: "white",
                   borderRadius: "12px",
                   boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-                  marginBottom: "15px",
-                  padding: "15px 20px",
+                  padding: "15px",
                   display: "flex",
                   alignItems: "center",
+                  gap: "15px",
+                  flexWrap: "wrap", // ✅ importante para que no se salga en móviles
+                  wordBreak: "break-word", // ✅ evita que el texto se desborde
                 }}
               >
                 <Link
                   to={`/gafete/${p.id}`}
-                  style={{
-                    textDecoration: "none",
-                    color: "inherit",
-                    marginRight: "15px",
-                  }}
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <img
                     src={`/${p.avatar ? `${p.avatar}.png` : "otro.png"}`}
@@ -157,17 +153,27 @@ const ListParticipantes = () => {
                   />
                 </Link>
 
-                <div>
-                  <h5 style={{ margin: "0", fontWeight: "bold", color: "#333" }}>
+                <div style={{ flex: 1, minWidth: "200px" }}>
+                  <h5
+                    style={{
+                      margin: "0",
+                      fontWeight: "bold",
+                      color: "#333",
+                      fontSize: "16px",
+                      lineHeight: "1.2",
+                    }}
+                  >
                     {p.nombre} {p.apellidos}
                   </h5>
-                  <p style={{ margin: "0", color: "#007bff" }}>
+                  <p style={{ margin: "0", color: "#007bff", fontSize: "14px" }}>
                     {p.email || "Sin Email"}
                   </p>
-                  <p style={{ margin: "0", color: "#007bff" }}>
+                  <p style={{ margin: "0", color: "#007bff", fontSize: "14px" }}>
                     @{p.twitter || "Sin Twitter"}
                   </p>
-                  <p style={{ margin: "0", color: "#777" }}>{p.ocupacion}</p>
+                  <p style={{ margin: "0", color: "#777", fontSize: "13px" }}>
+                    {p.ocupacion}
+                  </p>
                 </div>
               </div>
             ))}
